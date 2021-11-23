@@ -1,0 +1,4 @@
+[submodule "extern_libraries/faiss"]
+	path = extern_libraries/faiss
+	url = https://github.com/facebookresearch/faiss.git
+	branch = main
