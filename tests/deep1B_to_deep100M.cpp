@@ -38,7 +38,7 @@ void load_data(char* filename, float*& data, unsigned& num,unsigned& dim){// loa
     std::cout << sub_filename << std::endl;
     
     std::ofstream out(sub_filename, std::ios::binary | std::ios::out);
-    out.write((char*)&sub_num, sizeof(unsigned int));
+    out.write((char*)&dim, sizeof(unsigned int));
     for(size_t i = 0; i < sub_num; i++){
       out.write((char*)(data + i * dim), dim * 4);
     }
