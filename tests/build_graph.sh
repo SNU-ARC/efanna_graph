@@ -67,9 +67,9 @@ efanna_deep100M() {
       echo "ERROR: deep100M dataset does not exist"
       exit 1
     else
-      echo "Building deep100M_400nn.graph KNN graph"
       export sub_num=(0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15)
       for id in ${sub_num[@]}; do
+        echo "Building deep100M_400nn_${id}.graph KNN graph"
         ./test_nndescent deep100M/deep100M_base_${id}.fvecs deep100M_400nn_${id}.graph 400 420 12 20 200
       done
     fi
