@@ -61,6 +61,18 @@ efanna_deep1M() {
   fi
 }
 
+efanna_deep1M() {
+  if [ ! -f "deep1M_400nn.graph" ]; then
+    if [ ! -d "deep1M" ]; then
+      echo "ERROR: deep1M dataset does not exist"
+      exit 1
+    else
+      echo "Building deep1M_400nn.graph KNN graph"
+      ./test_nndescent deep1M/deep1m_base.fvecs deep1M_400nn.graph 400 420 12 20 200
+    fi
+  fi
+}
+
 if [ "${1}" == "sift1M" ]; then
   efanna_sift1M
 elif [ "${1}" == "gist1M" ]; then
