@@ -16,7 +16,8 @@ void load_data(char* filename, float*& data, unsigned& num,unsigned& dim){// loa
   num = (unsigned)(fsize / (dim+1) / 4);
 
   // SJ: num of DEEP100M sub dataset is 6.25M
-  unsigned int sub_num = num / 16;
+  unsigned int sub_num = num / 160;
+  std::cout << "sub_dataset size: " << sub_num << std::endl;
   data = new float[sub_num * dim * sizeof(float)];
   in.seekg(0,std::ios::beg);
 
