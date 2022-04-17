@@ -68,7 +68,10 @@ efanna_deep100M() {
       exit 1
     else
       echo "Building deep100M_400nn.graph KNN graph"
-      ./test_nndescent deep100M/deep100M_base.fvecs deep100M_400nn.graph 400 420 12 20 200
+      export sub_num=(0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15)
+      for id in ${sub_num[@]}; do
+        ./test_nndescent deep100M/deep100M_base_${id}.fvecs deep100M_400nn_${id}.graph 400 420 12 20 200
+      done
     fi
   fi
 }
@@ -82,7 +85,7 @@ elif [ "${1}" == "deep1M" ]; then
 elif [ "${1}" == "deep100M" ]; then
   efanna_deep100M
 elif [ "${1}" == "glove-100" ]; then
-#  efanna_glove-100
+  efanna_glove-100
 elif [ "${1}" == "crawl" ]; then
   efanna_crawl
 elif [ "${1}" == "all" ]; then
