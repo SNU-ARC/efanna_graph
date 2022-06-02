@@ -14,3 +14,6 @@ target_link_libraries(test_faiss_graph ${PROJECT_NAME} faiss ${BLAS_LIB})
 
 add_executable(deep1B_to_deep100M deep1B_to_deep100M.cpp)
 target_link_libraries(deep1B_to_deep100M ${PROJECT_NAME})
+
+add_executable(deep1B_partition deep1B_partition.cpp)
+target_link_libraries(deep1B_partition ${PROJECT_NAME})
