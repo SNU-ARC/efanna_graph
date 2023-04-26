@@ -49,6 +49,30 @@ efanna_deep1M() {
   fi
 }
 
+efanna_msong() {
+  if [ ! -f "msong_200nn.graph" ]; then
+    if [ ! -d "msong" ]; then
+      echo "ERROR: msong dataset does not exist"
+      exit 1
+    else
+      echo "Building msong_200nn.graph KNN graph"
+      ./test_nndescent msong/msong_base.fvecs msong_200nn.graph 200 200 10 10 100
+    fi
+  fi
+}
+
+efanna_glove-100() {
+  if [ ! -f "glove-100_400nn.graph" ]; then
+    if [ ! -d "glove-100" ]; then
+      echo "ERROR: glove-100 dataset does not exist"
+      exit 1
+    else
+      echo "Building glove-100_400nn.graph KNN graph"
+      ./test_nndescent glove-100/glove-100_base.fvecs glove-100_400nn.graph 400 420 12 20 200 
+    fi
+  fi
+}
+
 efanna_deep100M() {
   if [ ! -f "deep100M_400nn.graph" ]; then
     if [ ! -d "deep100M" ]; then
@@ -68,17 +92,23 @@ if [ "${1}" == "sift1M" ]; then
   efanna_sift1M
 elif [ "${1}" == "gist1M" ]; then
   efanna_gist1M
-elif [ "${1}" == "deep1M" ]; then
-  efanna_deep1M
-elif [ "${1}" == "deep100M" ]; then
-  efanna_deep100M
 elif [ "${1}" == "crawl" ]; then
   efanna_crawl
+elif [ "${1}" == "deep1M" ]; then
+  efanna_deep1M
+elif [ "${1}" == "msong" ]; then
+  efanna_msong
+elif [ "${1}" == "glove-100" ]; then
+  efanna_glove-100
+elif [ "${1}" == "deep100M" ]; then
+  efanna_deep100M
 elif [ "${1}" == "all" ]; then
   efanna_sift1M
   efanna_gist1M
   efanna_crawl
   efanna_deep1M
+  efanna_msong
+  efanna_glove-100
   efanna_deep100M
 else
   echo "Usage: ./build_graph.sh [dataset]"
